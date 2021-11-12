@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
 project(mviz)
 
+set(CMAKE_BUILD_TYPE RELEASE)
+
 include(FetchContent)
 
 set(FETCHCONTENT_QUIET FALSE)
