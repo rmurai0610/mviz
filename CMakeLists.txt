@@ -1,11 +1,16 @@
 cmake_minimum_required(VERSION 3.14)
 project(mviz)
-
-set(CMAKE_BUILD_TYPE RELEASE)
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+if(NOT BUILD_EXAMPLES_MVIZ)
+  set(BUILD_EXAMPLES_MVIZ False)
+endif()
 
 include(FetchContent)
 
 set(FETCHCONTENT_QUIET FALSE)
+
 FetchContent_Declare(
   raylib
   GIT_REPOSITORY https://github.com/raysan5/raylib.git
@@ -40,8 +45,10 @@ if(APPLE)
   )
 endif()
 
-target_include_directories(
-  mviz PUBLIC ./include ${FETCHCONTENT_BASE_DIR}/raylib/examples/shaders)
+if(BUILD_EXAMPLES_MVIZ)
+  target_include_directories(
+    mviz PUBLIC ./include ${FETCHCONTENT_BASE_DIR}/raylib/examples/shaders)
 
-add_executable(demo src/demo.cc)
-target_link_libraries(demo PUBLIC mviz)
+  add_executable(demo src/demo.cc)
+  target_link_libraries(demo PUBLIC mviz)
+endif()
