@@ -45,7 +45,7 @@ if(APPLE)
   )
 endif()
 target_include_directories(
-  mviz PUBLIC ./include ${FETCHCONTENT_BASE_DIR}/raylib/examples/shaders)
+  mviz PUBLIC ./include ${FETCHCONTENT_BASE_DIR}/raylib-src/examples/shaders)
 
 if(BUILD_EXAMPLES_MVIZ)
   add_executable(demo src/demo.cc)
