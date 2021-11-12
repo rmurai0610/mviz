@@ -44,11 +44,10 @@ if(APPLE)
       "-framework Cocoa, -framework OpenGL, -framework IOKit, -framework CoreVideo"
   )
 endif()
+target_include_directories(
+  mviz PUBLIC ./include ${FETCHCONTENT_BASE_DIR}/raylib/examples/shaders)
 
 if(BUILD_EXAMPLES_MVIZ)
-  target_include_directories(
-    mviz PUBLIC ./include ${FETCHCONTENT_BASE_DIR}/raylib/examples/shaders)
-
   add_executable(demo src/demo.cc)
   target_link_libraries(demo PUBLIC mviz)
 endif()
