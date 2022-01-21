@@ -34,7 +34,7 @@ add_library(
   ${FETCHCONTENT_BASE_DIR}/imgui-src/imgui_widgets.cpp)
 target_include_directories(imgui PUBLIC ${FETCHCONTENT_BASE_DIR}/imgui-src)
 
-add_library(mviz STATIC src/rlImGui.cpp)
+add_library(mviz STATIC src/rlImGui.cpp src/camera.cc)
 target_link_libraries(mviz PUBLIC raylib imgui)
 
 if(APPLE)
