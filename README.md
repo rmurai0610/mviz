@@ -1,5 +1,5 @@
 # mviz
-Mash-up of visualization tools
+Mix of ImGui, raylib and Raylib Extras
 
 Installation
 ```
