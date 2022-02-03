@@ -15,12 +15,14 @@ FetchContent_Declare(
   raylib
   GIT_REPOSITORY https://github.com/raysan5/raylib.git
   GIT_TAG 3.7.0
+  GIT_SHALLOW TRUE
   GIT_PROGRESS TRUE)
 
 FetchContent_Declare(
   imgui
   GIT_REPOSITORY https://github.com/ocornut/imgui.git
   GIT_TAG v1.85
+  GIT_SHALLOW TRUE
   GIT_PROGRESS TRUE)
 
 FetchContent_MakeAvailable(raylib imgui)
