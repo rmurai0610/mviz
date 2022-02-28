@@ -13,8 +13,8 @@ set(FETCHCONTENT_QUIET FALSE)
 
 FetchContent_Declare(
   raylib
-  GIT_REPOSITORY https://github.com/raysan5/raylib.git
-  GIT_TAG 3.7.0
+  GIT_REPOSITORY https://github.com/rmurai0610/raylib.git
+  GIT_TAG master
   GIT_SHALLOW TRUE
   GIT_PROGRESS TRUE)
 
