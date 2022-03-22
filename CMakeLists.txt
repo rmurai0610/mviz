@@ -8,6 +8,8 @@ if(NOT BUILD_EXAMPLES_MVIZ)
 endif()
 
 include(FetchContent)
+find_package(Eigen3)
+find_package(manif)
 
 set(FETCHCONTENT_QUIET FALSE)
 
@@ -26,6 +28,31 @@ FetchContent_Declare(
   GIT_PROGRESS TRUE)
 
 FetchContent_MakeAvailable(raylib imgui)
+
+if(NOT Eigen3_FOUND)
+  FetchContent_Declare(
+    Eigen
+    GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
+    GIT_TAG 3.3
+    GIT_SHALLOW TRUE
+    GIT_PROGRESS TRUE)
+
+  set(BUILD_TESTING OFF)
+  set(EIGEN_BUILD_PKGCONFIG OFF)
+  FetchContent_MakeAvailable(Eigen)
+  add_library(Eigen3::Eigen ALIAS eigen)
+
+endif()
+if(NOT manif_FOUND)
+  FetchContent_Declare(
+    manif
+    GIT_REPOSITORY https://github.com/artivis/manif
+    GIT_TAG 0.0.4
+    GIT_SHALLOW TRUE
+    GIT_PROGRESS TRUE)
+  FetchContent_MakeAvailable(manif)
+
+endif()
 
 add_library(
   imgui STATIC
@@ -46,6 +73,7 @@ if(APPLE)
       "-framework Cocoa, -framework OpenGL, -framework IOKit, -framework CoreVideo"
   )
 endif()
+
 target_include_directories(
   mviz PUBLIC ./include ${FETCHCONTENT_BASE_DIR}/raylib-src/examples/shaders)
 
