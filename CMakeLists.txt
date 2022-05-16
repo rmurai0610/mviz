@@ -8,8 +8,8 @@ if(NOT BUILD_EXAMPLES_MVIZ)
 endif()
 
 include(FetchContent)
-find_package(Eigen3)
-find_package(manif)
+#find_package(Eigen3)
+#find_package(manif)
 
 set(FETCHCONTENT_QUIET FALSE)
 
@@ -29,30 +29,30 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib imgui)
 
-if(NOT Eigen3_FOUND)
-  FetchContent_Declare(
-    Eigen
-    GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
-    GIT_TAG 3.3
-    GIT_SHALLOW TRUE
-    GIT_PROGRESS TRUE)
+#if(NOT Eigen3_FOUND)
+  #FetchContent_Declare(
+    #Eigen
+    #GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
+    #GIT_TAG 3.3
+    #GIT_SHALLOW TRUE
+    #GIT_PROGRESS TRUE)
 
-  set(BUILD_TESTING OFF)
-  set(EIGEN_BUILD_PKGCONFIG OFF)
-  FetchContent_MakeAvailable(Eigen)
-  add_library(Eigen3::Eigen ALIAS eigen)
+  #set(BUILD_TESTING OFF)
+  #set(EIGEN_BUILD_PKGCONFIG OFF)
+  #FetchContent_MakeAvailable(Eigen)
+  #add_library(Eigen3::Eigen ALIAS eigen)
 
-endif()
-if(NOT manif_FOUND)
-  FetchContent_Declare(
-    manif
-    GIT_REPOSITORY https://github.com/artivis/manif
-    GIT_TAG 0.0.4
-    GIT_SHALLOW TRUE
-    GIT_PROGRESS TRUE)
-  FetchContent_MakeAvailable(manif)
+#endif()
+#if(NOT manif_FOUND)
+  #FetchContent_Declare(
+    #manif
+    #GIT_REPOSITORY https://github.com/artivis/manif
+    #GIT_TAG 0.0.4
+    #GIT_SHALLOW TRUE
+    #GIT_PROGRESS TRUE)
+  #FetchContent_MakeAvailable(manif)
 
-endif()
+#endif()
 
 add_library(
   imgui STATIC
